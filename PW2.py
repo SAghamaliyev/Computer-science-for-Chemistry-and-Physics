@@ -1,4 +1,3 @@
-from ast import NodeVisitor
 import matplotlib.pyplot as plt
 import numpy as npm
 
@@ -41,7 +40,7 @@ plt.plot(t, ax_t, 'g-', label='ax(t)', linewidth=2)
 plt.plot(t, ay_t, 'm-', label='ay(t)', linewidth=2)
 plt.xlabel('Time')
 plt.ylabel('Acceleration')
-plt.title('1b:Acceleration vs Time')
+plt.title('1b:Acceleration/Time')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
@@ -56,13 +55,13 @@ plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
 
-#2b:Noisy Acceleration 
+#2b:Noisy Acceleration
 plt.plot(t, ax_t, 'g--', label='Ideal ax(t)', linewidth=2, alpha=0.5)
 plt.plot(t, ax_from_noisy_pos, 'darkgreen', label='Calculated ax(t)', linewidth=1, alpha=0.7)
 plt.plot(t, ay_t, 'm--', label='Ideal ay(t)', linewidth=2, alpha=0.5)
 plt.plot(t, ay_from_noisy_pos, 'purple', label='Calculated ay(t)', linewidth=1, alpha=0.7)
-plt.xlabel('Time [s]')
-plt.ylabel('Acceleration [m/s²]')
+plt.xlabel('Time')
+plt.ylabel('Acceleration')
 plt.title('2b. Acceleration from Noisy Position')
 plt.legend()
 plt.grid(True, alpha=0.3)
@@ -70,6 +69,16 @@ plt.show()
 
 
 #2c:
+error_ax = ax_from_noisy_pos - ax_t
+error_ay = ay_from_noisy_pos - ay_t
+plt.plot(t, error_ax, 'g-', label='Error ax', linewidth=1)
+plt.plot(t, error_ay, 'm-', label='Error ay', linewidth=1)
+plt.xlabel('Time')
+plt.ylabel('Acceleration Error')
+plt.title('2c. Impact on derivative process')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
 
 #3a:
 plt.plot(t, ax_t, 'g--', label='Ideal ax(t)', linewidth=2, alpha=0.5)
@@ -86,10 +95,21 @@ plt.show()
 #3b:
 plt.plot(t, x_from_noisy_acc, 'b-', label='Calculated x(t)', linewidth=1)
 plt.plot(t, y_from_noisy_acc, 'r-', label='Calculated y(t)', linewidth=1)
-plt.xlabel('Time [s]')
-plt.ylabel('Position [m]')
+plt.xlabel('Time')
+plt.ylabel('Position')
 plt.title('3b. Position from Noisy Acceleration')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
 
+#3c:
+error_x = x_from_noisy_acc - x_t
+error_y = y_from_noisy_acc - y_t
+plt.plot(t, error_x, 'b-', label='Error x', linewidth=1)
+plt.plot(t, error_y, 'r-', label='Error y', linewidth=1)
+plt.xlabel('Time')
+plt.ylabel('Position Error')
+plt.title('3c. Impact on derivative process')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
