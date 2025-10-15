@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-import numpy as npm
-
+import numpy as np
+from scipy.integrate import cumulative_trapezoid
 t = np.linspace(0, 20, 1000)
 dt = t[1] - t[0]
 
